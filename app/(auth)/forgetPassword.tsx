@@ -1,0 +1,67 @@
+import CustomButton from "@/components/ui/Button";
+import Input from "@/components/ui/inputField";
+import { Typography } from "@/components/ui/Typography";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+
+export default function login() {
+  return (
+    <View style={styles.container}>
+      <Typography
+        variant="bold"
+        align="left"
+        color="#6A0066"
+        size={30}
+        lineHeight={50}
+      >
+        Forgot password?
+      </Typography>
+      <Typography
+        variant="light"
+        align="left"
+        color="#934790"
+        size={16}
+        style={{ marginBottom: 38 }}
+      >
+        Don’t worry! It happens. Please enter the email associated with your
+        account.
+      </Typography>
+      <Input
+        label="Email"
+        placeholder="Enter your email"
+        autoCapitalize="none"
+        keyboardType="email-address"
+      />
+
+      <View style={{ height: 27 }} />
+
+      <CustomButton
+        title="Send code"
+        variant="primary"
+        size="large"
+      ></CustomButton>
+      <Typography
+        variant="regular"
+        align="center"
+        color="#974A8D"
+        size={14}
+        lineHeight={50}
+        style={{ marginTop: 200 }}
+      >
+        Remember password?{" "}
+        <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
+          Log in
+        </Typography>
+      </Typography>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#FFF5E7",
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+  },
+});

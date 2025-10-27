@@ -1,7 +1,6 @@
 import CustomButton from '@/components/ui/Button'
 import Input from '@/components/ui/inputField'
 import { Typography } from '@/components/ui/Typography'
-import { push } from 'expo-router/build/global-state/routing'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
@@ -9,8 +8,15 @@ export default function login() {
   return (
     <View style={styles.container}>
         <Typography variant="bold" align="left" color="#6A0066" size={30} lineHeight={50}>
-          Log in
+            Create account
         </Typography>
+         <Input
+          label="User Name"
+          placeholder="Enter your name"
+          autoCapitalize="none"
+          keyboardType="default"
+          />
+          <View style={{height:34}}/>
         <Input
           label="Email"
           placeholder="Enter your email"
@@ -26,18 +32,17 @@ export default function login() {
           secureTextEntry
         />
         <View style={{height:27}}/>
-        <Typography variant="light" align="right" color="#000000" size={12} lineHeight={50} style={{marginBottom:38}}
-         onPress={()=>push("/(auth)/forgetPassword")}>
-          Forgot Password
+        <Typography variant="light" align="left" color="#000000" size={12} lineHeight={50} style={{marginBottom:38}}>
+          I accept the terms and privacy policy
         </Typography>
          <CustomButton
-            title="Log in"
+            title="Sign Up"
             variant="primary"
             size="large"
           ></CustomButton>
-          <Typography variant="regular" align="center" color="#974A8D" size={14} lineHeight={50} style={{marginTop:200}}>
-          Don’t have an account?  <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
-          Sign Up
+          <Typography variant="regular" align="center" color="#974A8D" size={14} lineHeight={50} style={{marginTop:64}}>
+          Already have an account?  <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
+        Log in
           
         </Typography>
 

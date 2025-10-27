@@ -39,6 +39,7 @@ export default function index() {
             size="large"
           ></CustomButton>
           <CustomButton
+           onPress={()=>push("/(auth)/signUp")}
             title="Create account"
             variant="secondary"
             size="large"
