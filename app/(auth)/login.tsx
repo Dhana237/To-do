@@ -27,7 +27,7 @@ export default function login() {
         />
         <View style={{height:27}}/>
         <Typography variant="light" align="right" color="#000000" size={12} lineHeight={50} style={{marginBottom:38}}
-         onPress={()=>push("/(auth)/forgetPassword")}>
+         onPress={()=>push("/(otpInput)/forgetPassword")}>
           Forgot Password
         </Typography>
          <CustomButton
@@ -36,7 +36,7 @@ export default function login() {
             size="large"
           ></CustomButton>
           <Typography variant="regular" align="center" color="#974A8D" size={14} lineHeight={50} style={{marginTop:200}}>
-          Don’t have an account?  <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
+          Don’t have an account?  <Typography variant="regular" color="#6A0066" size={14} lineHeight={50} onPress={()=>push("/(auth)/signUp")}>
           Sign Up
           
         </Typography>

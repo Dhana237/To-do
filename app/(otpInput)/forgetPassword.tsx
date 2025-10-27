@@ -1,6 +1,7 @@
 import CustomButton from "@/components/ui/Button";
 import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
+import { push } from "expo-router/build/global-state/routing";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -39,6 +40,7 @@ export default function login() {
         title="Send code"
         variant="primary"
         size="large"
+        onPress={()=>push("/(otpInput)/verify")}
       ></CustomButton>
       <Typography
         variant="regular"
@@ -46,7 +48,7 @@ export default function login() {
         color="#974A8D"
         size={14}
         lineHeight={50}
-        style={{ marginTop: 200 }}
+        style={{ marginTop: 240 }}
       >
         Remember password?{" "}
         <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>

@@ -15,44 +15,41 @@ export default function login() {
         size={30}
         lineHeight={50}
       >
-        Create account
+        Reset password
       </Typography>
-      <Input
-        label="User Name"
-        placeholder="Enter your name"
-        autoCapitalize="none"
-        keyboardType="default"
-      />
-      <View style={{ height: 34 }} />
-      <Input
-        label="Email"
-        placeholder="Enter your email"
-        autoCapitalize="none"
-        keyboardType="email-address"
-      />
-      <View style={{ height: 34 }} />
-      <Input
-        label="Password"
-        placeholder="Enter your password"
-        autoCapitalize="none"
-        keyboardType="email-address"
-        secureTextEntry
-      />
-      <View style={{ height: 27 }} />
+       <View style={{ height: 16}} />
       <Typography
         variant="light"
         align="left"
-        color="#000000"
-        size={12}
-        lineHeight={50}
+        color="#934790"
+        size={16}
         style={{ marginBottom: 38 }}
       >
-        I accept the terms and privacy policy
+        Please type something you’ll remember
       </Typography>
+       <Input
+          label="New Password"
+          placeholder="must be 8 characters"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          secureTextEntry
+        />
+         <View style={{ height: 36}} />
+         <Input
+          label="Confirm new password"
+          placeholder="repeat password"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          secureTextEntry
+        />
+
+      <View style={{ height: 27 }} />
+
       <CustomButton
-        title="Sign Up"
+        title="Reset password"
         variant="primary"
         size="large"
+        onPress={()=>push("/(otpInput)/passwordChanged")}
       ></CustomButton>
       <Typography
         variant="regular"
@@ -60,10 +57,10 @@ export default function login() {
         color="#974A8D"
         size={14}
         lineHeight={50}
-        style={{ marginTop: 64 }}
+        style={{ marginTop: 240 }}
       >
-        Already have an account?{" "}
-        <Typography variant="regular" color="#6A0066" size={14} lineHeight={50} onPress={()=>push("/(auth)/login")}>
+        Remember Old Password?{" "}
+        <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
           Log in
         </Typography>
       </Typography>
