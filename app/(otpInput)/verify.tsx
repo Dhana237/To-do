@@ -3,11 +3,20 @@ import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function login() {
   return (
     <View style={styles.container}>
+      <Image
+        source={require("@/assets/images/Star.png")}
+        style={{
+          width: 46,
+          height: 44,
+          marginBottom: 39,
+          alignSelf: "flex-end",
+        }}
+      />
       <Typography
         variant="bold"
         align="left"
@@ -71,7 +80,7 @@ export default function login() {
         title="Verify"
         variant="primary"
         size="large"
-        onPress={()=>push("/(otpInput)/resetPassword")}
+        onPress={() => push("/(otpInput)/resetPassword")}
       ></CustomButton>
       <Typography
         variant="bold"

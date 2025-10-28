@@ -3,11 +3,15 @@ import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function login() {
   return (
     <View style={styles.container}>
+      <Image
+        source={require("@/assets/images/Star.png")}
+        style={{ width: 46, height: 44, marginBottom: 39, alignSelf: 'flex-end', }}
+      />
       <Typography
         variant="bold"
         align="left"
@@ -22,7 +26,7 @@ export default function login() {
         align="left"
         color="#934790"
         size={16}
-        style={{ marginBottom: 38 }}
+        style={{ marginBottom: 38, marginTop: 13 }}
       >
         Don’t worry! It happens. Please enter the email associated with your
         account.
@@ -40,7 +44,7 @@ export default function login() {
         title="Send code"
         variant="primary"
         size="large"
-        onPress={()=>push("/(otpInput)/verify")}
+        onPress={() => push("/(otpInput)/verify")}
       ></CustomButton>
       <Typography
         variant="regular"
@@ -51,7 +55,7 @@ export default function login() {
         style={{ marginTop: 240 }}
       >
         Remember password?{" "}
-        <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
+        <Typography variant="bold" color="#6A0066" size={14} lineHeight={50} onPress={()=>push("/(auth)/login")}>
           Log in
         </Typography>
       </Typography>

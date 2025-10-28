@@ -2,11 +2,15 @@ import CustomButton from "@/components/ui/Button";
 import { Typography } from "@/components/ui/Typography";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function login() {
   return (
     <View style={styles.container}>
+      <Image
+          source={require('@/assets/images/logo.png')}
+          style={{ width: 91, height: 84, alignSelf: 'center', marginBottom:39}}
+        />
       <Typography
         variant="bold"
         align="center"

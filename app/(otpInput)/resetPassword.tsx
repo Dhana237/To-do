@@ -3,11 +3,20 @@ import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function login() {
   return (
     <View style={styles.container}>
+      <Image
+        source={require("@/assets/images/Star.png")}
+        style={{
+          width: 46,
+          height: 44,
+          marginBottom: 39,
+          alignSelf: "flex-end",
+        }}
+      />
       <Typography
         variant="bold"
         align="left"
@@ -17,7 +26,7 @@ export default function login() {
       >
         Reset password
       </Typography>
-       <View style={{ height: 16}} />
+      <View style={{ height: 16 }} />
       <Typography
         variant="light"
         align="left"
@@ -27,21 +36,21 @@ export default function login() {
       >
         Please type something you’ll remember
       </Typography>
-       <Input
-          label="New Password"
-          placeholder="must be 8 characters"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          secureTextEntry
-        />
-         <View style={{ height: 36}} />
-         <Input
-          label="Confirm new password"
-          placeholder="repeat password"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          secureTextEntry
-        />
+      <Input
+        label="New Password"
+        placeholder="must be 8 characters"
+        autoCapitalize="none"
+        keyboardType="email-address"
+        secureTextEntry
+      />
+      <View style={{ height: 36 }} />
+      <Input
+        label="Confirm new password"
+        placeholder="repeat password"
+        autoCapitalize="none"
+        keyboardType="email-address"
+        secureTextEntry
+      />
 
       <View style={{ height: 27 }} />
 
@@ -49,7 +58,7 @@ export default function login() {
         title="Reset password"
         variant="primary"
         size="large"
-        onPress={()=>push("/(otpInput)/passwordChanged")}
+        onPress={() => push("/(otpInput)/passwordChanged")}
       ></CustomButton>
       <Typography
         variant="regular"
@@ -60,7 +69,7 @@ export default function login() {
         style={{ marginTop: 240 }}
       >
         Remember Old Password?{" "}
-        <Typography variant="regular" color="#6A0066" size={14} lineHeight={50}>
+        <Typography variant="bold" color="#6A0066" size={14} lineHeight={50} onPress={()=>push("/(auth)/login")}>
           Log in
         </Typography>
       </Typography>
