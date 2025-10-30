@@ -1,9 +1,11 @@
 import CustomButton from "@/components/ui/Button";
 import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
+import { Ionicons } from "@expo/vector-icons";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+// @ts-ignore: no type declarations for react-native-vector-icons/MaterialIcons
 
 export default function login() {
   return (
@@ -46,6 +48,8 @@ export default function login() {
         autoCapitalize="none"
         keyboardType="email-address"
         secureTextEntry
+        rightIcon={<Ionicons name="eye-off" size={20} color="#6A0066"/>}
+        
       />
       <View style={{ height: 27 }} />
       <Typography
@@ -56,6 +60,7 @@ export default function login() {
         lineHeight={50}
         style={{ marginBottom: 38 }}
       >
+        <Ionicons name="checkmark-circle" size={24} color="#FF0066" style={{ marginRight: 12, top:4}}/>
         I accept the terms and privacy policy
       </Typography>
       <CustomButton

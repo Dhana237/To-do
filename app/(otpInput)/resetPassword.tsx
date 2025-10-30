@@ -1,6 +1,7 @@
 import CustomButton from "@/components/ui/Button";
 import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
+import { Ionicons } from "@expo/vector-icons";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
@@ -42,6 +43,7 @@ export default function login() {
         autoCapitalize="none"
         keyboardType="email-address"
         secureTextEntry
+        rightIcon={<Ionicons name="eye" size={20} color="#6A0066"/>}
       />
       <View style={{ height: 36 }} />
       <Input
@@ -50,6 +52,7 @@ export default function login() {
         autoCapitalize="none"
         keyboardType="email-address"
         secureTextEntry
+        rightIcon={<Ionicons name="eye" size={20} color="#6A0066"/>}
       />
 
       <View style={{ height: 27 }} />
