@@ -3,14 +3,17 @@ import { Typography } from "@/components/ui/Typography";
 import { push } from "expo-router/build/global-state/routing";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function index() {
+export default function Index() {
+
+  const insets = useSafeAreaInsets();
    
 
   return (
     <>
       <View style={[styles.container]}>
-        <View style={{ paddingHorizontal: 36, paddingBottom:36, alignItems:"center"}}>
+        <View style={{ paddingHorizontal:24, paddingBottom:24, alignItems:"center", paddingTop: insets.top  }}>
           <Image
             // style={styles.image}
             source={require("@/assets/images/image1.png")}
@@ -65,13 +68,14 @@ export default function index() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FF0066",
+    justifyContent:"space-between",
     flex: 1,
   },
   subContainer: {
-    flex: 1,
+    
     backgroundColor: "#FFF5E7",
-    borderTopLeftRadius: 48,
-    borderTopRightRadius: 48,
+    borderTopLeftRadius: 42,
+    borderTopRightRadius: 42,
     bottom: 0,
     padding: 26,
   },

@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     borderColor: '#6A0066',
     borderRadius: 22,
     paddingHorizontal: 12,
-    paddingVertical: 16,
+    paddingVertical: 12,
     fontSize: 16,
     fontFamily:"UbuntuRegular",
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF5E7',
     flex:1
   },
    inputWithLeftIcon: {

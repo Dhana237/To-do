@@ -7,7 +7,7 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 // @ts-ignore: no type declarations for react-native-vector-icons/MaterialIcons
 
-export default function login() {
+export default function Signup() {
   return (
     <View style={styles.container}>
       <Image

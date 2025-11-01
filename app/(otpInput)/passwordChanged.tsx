@@ -4,7 +4,7 @@ import { push } from "expo-router/build/global-state/routing";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 
-export default function login() {
+export default function PasswordChanged() {
   return (
     <View style={styles.container}>
       <Image

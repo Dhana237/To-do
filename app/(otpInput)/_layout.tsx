@@ -8,7 +8,7 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
-export default function RootLayout() {
+export default function OtpInputLayout() {
   return (
     <SafeAreaProvider>
       <Stack>
