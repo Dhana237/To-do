@@ -3,11 +3,41 @@ import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
 import { Ionicons } from "@expo/vector-icons";
 import { push } from "expo-router/build/global-state/routing";
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { Alert, Image, StyleSheet, View } from "react-native";
 // @ts-ignore: no type declarations for react-native-vector-icons/MaterialIcons
 
 export default function Signup() {
+
+  const [name, setName]=useState("");
+  const [email, setEmail]=useState("");
+  const [password,setPassword]=useState("")
+
+const signup=async()=>{
+  try{
+    const response = await fetch("http://localhost:5000/api/user/signUp",{
+      method: "POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password
+      })
+    })
+    const result = await response.json();
+    if(response.ok){
+      Alert.alert("Success", "Account created successfully")
+      push("/(auth)/login")
+    } else {
+      Alert.alert("Sign Up Failed", result.message)
+    }
+  }catch(error){
+    console.log("Signup Error:", error);
+    Alert.alert("Error", "Something went wrong")
+  }
+};
   return (
     <View style={styles.container}>
       <Image
@@ -33,6 +63,8 @@ export default function Signup() {
         placeholder="Enter your name"
         autoCapitalize="none"
         keyboardType="default"
+        value={name}
+        onChangeText={setName}
       />
       <View style={{ height: 34 }} />
       <Input
@@ -40,6 +72,8 @@ export default function Signup() {
         placeholder="Enter your email"
         autoCapitalize="none"
         keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
       />
       <View style={{ height: 34 }} />
       <Input
@@ -47,6 +81,8 @@ export default function Signup() {
         placeholder="Enter your password"
         autoCapitalize="none"
         keyboardType="email-address"
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
         rightIcon={<Ionicons name="eye-off" size={20} color="#6A0066"/>}
         
@@ -67,6 +103,7 @@ export default function Signup() {
         title="Sign Up"
         variant="primary"
         size="large"
+        onPress={signup}
       ></CustomButton>
       <Typography
         variant="regular"

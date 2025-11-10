@@ -2,12 +2,57 @@ import CustomButton from "@/components/ui/Button";
 import Input from "@/components/ui/inputField";
 import { Typography } from "@/components/ui/Typography";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { push } from "expo-router/build/global-state/routing";
 import React, { useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Alert, Image, StyleSheet, View } from "react-native";
+
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [viewPsw, setViewPsw]=useState(false)
+
+  const login = async(email:string ,password:string)=>{
+    
+    try{
+      const response = await fetch("http://localhost:5000/api/user/login",{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+          email: email,
+          password: password
+        })
+      })
+      const result = await response.json()
+      if(response.ok){
+        return {success: true, data: result};
+      }else{
+        return {success:false, message:result.message}
+      }
+
+    }catch(error){
+      console.log("Login Error:", error);
+      return { success: false, message:"Something went wrong"}
+      
+    }
+  }
+
+   const handleLogin = async () => {
+    const result = await login(email, password);
+
+    if (result.success) {
+      Alert.alert("Success", "Logged in successfully");
+      router.push("/(tabs)/home");
+    } else {
+      Alert.alert("Login Failed", result.message);
+    }
+  }
+
+
+
   return (
     <View style={styles.container}>
       <Image
@@ -33,6 +78,8 @@ export default function Login() {
         placeholder="Enter your email"
         autoCapitalize="none"
         keyboardType="email-address"
+        value={email}
+        onChangeText={(text:any)=>setEmail(text)}
         rightIcon={ 
         <Ionicons name="checkmark-circle" size={24} color="#FF0066"/>}
       />
@@ -42,6 +89,8 @@ export default function Login() {
         placeholder="Enter your password"
         autoCapitalize="none"
         keyboardType="default"
+        value={password}
+        onChangeText={(text:any)=>setPassword(text)}
         rightIcon={
         !viewPsw ?
         <Ionicons name="eye-off" size={20} color="#6A0066"/>:
@@ -63,6 +112,7 @@ export default function Login() {
         Forgot Password
       </Typography>
       <CustomButton
+        onPress={handleLogin}
         title="Log in"
         variant="primary"
         size="large"
