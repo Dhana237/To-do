@@ -2,6 +2,7 @@
 import CustomButton from "@/components/ui/Button";
 import OTPInput from "@/components/ui/OtpInput";
 import { Typography } from "@/components/ui/Typography";
+import { useLocalSearchParams } from "expo-router";
 import { push } from "expo-router/build/global-state/routing";
 import React, { useState } from "react";
 import { Alert, Image, StyleSheet, View } from "react-native";
@@ -9,6 +10,7 @@ import { Alert, Image, StyleSheet, View } from "react-native";
 type AppState = {
   otp: string;
   error: boolean;
+  
 }
 
 export default function Verify() {
@@ -16,6 +18,8 @@ export default function Verify() {
     otp: '',
     error: false,
   });
+
+  const {email} = useLocalSearchParams()
 
   const handleOTPComplete = (code: string) => {
     console.log('OTP Complete:', code);
@@ -34,6 +38,40 @@ export default function Verify() {
       Alert.alert('Error', 'Invalid OTP. Please try again.');
     }
   };
+
+  const verifyOtp = async(email:any, otp:string)=>{
+    try {
+      const response = await fetch("http://localhost:5000/api/user/verify-otp",{
+        method: "POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({email, otp}),
+      })
+      const result = await response.json()
+      console.log("OTP verify Result:", result);
+      if (response.ok && result.success) {
+        Alert.alert("Success", result.message || "OTP verified successfully!")
+        setTimeout(()=>{
+          push({pathname: "/(otpInput)/resetPassword",params:{email}})
+        },1000)
+      } else {
+        setState(prev => ({...prev, error:true}));
+        Alert.alert("Error", result.message || "Invalid or expired OTP")
+      }
+    } catch (error) {
+      console.log("OTP Verification Error:", error);
+      Alert.alert("Error", "Network error or server not responding")
+    }
+  }
+
+const handleVerifyPress = async()=>{
+  if (state.otp.length===4) {
+    await verifyOtp(email , state.otp)
+  } else {
+    Alert.alert("Error", "Please enter the complete 4-digit OTP")
+  }
+}
 
   return (
     <View style={styles.container}>
@@ -97,13 +135,7 @@ export default function Verify() {
         title="Verify"
         variant="primary"
         size="large"
-        onPress={() => {
-          if (state.otp.length === 4) {
-            handleOTPComplete(state.otp);
-          } else {
-            Alert.alert('Error', 'Please enter the complete OTP code.');
-          }
-        }}
+        onPress={handleVerifyPress}
       />
       
       <Typography
